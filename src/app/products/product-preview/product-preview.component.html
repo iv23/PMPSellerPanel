@@ -1,0 +1,30 @@
+<div class="card">
+  <div class="card-header h-25">
+    <div class="">
+      <img [routerLink]="['/product', product.productId]" class="rounded-circle mx-1" style="height: 32px; width: 32px" [src]="primaryImage">
+      <div class="d-flex flex-column">
+        <span class="text-muted">
+          Seller Company - {{ seller.companyName }}
+        </span>
+      </div>
+      <div class="float-right">
+        <button class="btn-primary btn" (click)="editClicked($event)">Edit</button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body" >
+    <div class="">
+      Product Code - {{product.productCode}}
+      <br>
+      Product Dimensions - {{product.dimensions}}
+      <br>
+      Product Description - {{product.shortDescription}}
+    </div>
+  </div>
+  <div class="card-footer">
+    <div class="float-right">
+      <button class="btn-primary btn" (click)="viewClicked()">View Product</button>
+    </div>
+  </div>
+</div>
+

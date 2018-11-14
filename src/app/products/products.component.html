@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="col-4">
+    <form [formGroup]="filterForm" (ngSubmit)="onFilterTapped()">
+
+      <div class="form-group">
+        <label for="filterType">Filter</label>
+        <select formControlName="filterType" class="custom-select" name="filterType" id="filterType">
+          <option *ngFor="let filterTypeOption of filterTypes" [value]="filterTypeOption">{{filterTypeOption}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="filters">By</label>
+        <select formControlName="filterBy" class="form-control" id="filters">
+          <option *ngFor="let filter of filters" [value]="filter">{{filter}}</option>
+        </select>
+      </div>
+
+      <div class="text-center">
+        <input type="submit" value="Apply Filter" class="btn btn-primary">
+      </div>
+
+    </form>
+  </div>
+  <div class="col-4">
+  <form [formGroup]="sortForm" (ngSubmit)="onSortTapped()">
+    <div class="form-group">
+      <label for="sort">Sort By</label>
+      <select formControlName="sortBy" class="custom-select" name="sort" id="sort">
+        <option *ngFor="let sort of sortBy" [value]="sort">{{sort}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="sortDirection">Sort Order</label>
+      <select formControlName="sortDirection" class="custom-select" name="sortDirection" id="sortDirection">
+        <option value="asc">Ascending</option>
+        <option value="desc">Descending</option>
+      </select>
+    </div>
+    <div class="text-center">
+      <input type="submit" value="Apply Sort" class="btn btn-primary">
+    </div>
+  </form>
+</div>
+  <div class="col-4">
+    <form [formGroup]="searchForm" (ngSubmit)="onSearchTapped()">
+      <div class="form-group">
+        <label for="search">Search</label>
+        <input formControlName="searchQuery" class="form-control" id="search" type="text" name="search" value="">
+      </div>
+      <div class="form-group">
+        <label for="searchBy">By</label>
+        <select formControlName="searchBy" class="custom-select" name="searchBy" id="searchBy">
+          <option *ngFor="let search of searchBy" [value]="search">{{search}}</option>
+        </select>
+      </div>
+      <div class="text-center">
+        <input type="submit" value="Search" class="btn btn-primary">
+      </div>
+    </form>
+  </div>
+</div>
+<div class="container">
+
+  <div class="row mt-3">
+    <div class="col-md-12">
+
+      <div class="span8">
+        <div *ngFor="let product of products">
+          <app-product-preview [product]="product"></app-product-preview>
+          <br>
+        </div>
+      </div>
+
+      <ul class="nav nav-pills">
+        <li class="nav-item" *ngFor="let p of pages; let i=index">
+          <a class="nav-link" href="" (click)="setPage(i,$event)" [ngClass]="{'active': i==page}">{{i}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+

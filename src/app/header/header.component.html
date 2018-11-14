@@ -1,0 +1,13 @@
+<nav class="navbar navbar-dark bg-dark mb-5">
+  <a class="navbar-brand" href="#">Yourmart Seller Panel</a>
+  <div class="navbar-expand ml-auto navbar-nav">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="#">Home</a>
+      <a class="nav-item nav-link" routerLink="/login" *ngIf="!this._user.getLoginStatus()">Sign In</a>
+      <a class="nav-item nav-link" routerLink="/register" *ngIf="!this._user.getLoginStatus()">Sign Up</a>
+      <a class="nav-item nav-link" routerLink="/addProduct" *ngIf="this._user.getLoginStatus()">Add product</a>
+      <a class="nav-item nav-link" routerLink="/myProducts" *ngIf="this._user.getLoginStatus()">My products</a>
+      <a class="nav-item nav-link" *ngIf="this._user.getLoginStatus()" (click)="logoutClicked()">Logout</a>
+    </div>
+  </div>
+</nav>

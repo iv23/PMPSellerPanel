@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-md-6 mx-auto">
+    <div class="card rounded-0">
+      <div class="card-header" *ngIf="!isRegistered">
+        <h3 class="mb-0">Sign Up</h3>
+        <a routerLink="/login">Have an account?</a>
+      </div>
+      <div class="card-header" *ngIf="isRegistered">
+        <h3 class="mb-0">Sign Up Successful</h3>
+        <a routerLink="/login">Click here to login</a>
+      </div>
+      <div class="card-body" *ngIf="!isRegistered">
+        <form [formGroup]= "registerForm" (ngSubmit)="signUpTapped()">
+          <div class="form-group">
+            <label for="companyName"></label>
+            <input type="text" name="companyName" id="companyName" class="form-control rounded-0" formControlName="companyName" aria-describedby="companyNameHelp" placeholder="Enter company name">
+          </div>
+          <div class="form-group">
+            <label for="ownerName"></label>
+            <input type="text" name="ownerName" id="ownerName" class="form-control rounded-0" formControlName="ownerName" aria-describedby="ownerNameHelp" placeholder="Enter owner name">
+          </div>
+          <div class="form-group">
+            <label for="address"></label>
+            <input type="text" name="address" id="address" class="form-control rounded-0" formControlName="address" aria-describedby="addressHelp" placeholder="Address line 1">
+          </div>
+          <div class="form-group">
+            <label for="address2"></label>
+            <input type="text" name="address2" id="address2" class="form-control rounded-0" formControlName="address2" aria-describedby="address2Help" placeholder="Address line 2">
+          </div>
+          <div class="form-group">
+            <label for="city"></label>
+            <input type="text" name="city" id="city" class="form-control rounded-0" formControlName="city" aria-describedby="cityHelp" placeholder="City">
+          </div>
+          <div class="form-group">
+            <label for="state"></label>
+            <input type="text" name="state" id="state" class="form-control rounded-0" formControlName="state" aria-describedby="stateHelp" placeholder="State">
+          </div>
+          <div class="form-group">
+            <label for="pinCode"></label>
+            <input type="text" name="pinCode" id="pinCode" class="form-control rounded-0" formControlName="pinCode" aria-describedby="pinCodeHelp" placeholder="Pin Code">
+          </div>
+          <div class="form-group">
+            <label for="country"></label>
+            <input type="text" name="country" id="country" class="form-control rounded-0" formControlName="country" aria-describedby="countryHelp" placeholder="Country">
+          </div>
+          <div class="form-group">
+            <label for="telephone"></label>
+            <input type="tel" name="telephone" id="telephone" class="form-control rounded-0" formControlName="telephone" aria-describedby="telephoneHelp" placeholder="Telephone">
+          </div>
+          <div class="form-group">
+            <label for="gstNumber"></label>
+            <input type="" name="gstNumber" id="gstNumber" class="form-control rounded-0" formControlName="gstNumber" aria-describedby="gstNumberHelp" placeholder="Enter your GST Number">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="form-control rounded-0" formControlName="email" aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control rounded-0" formControlName="password" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-primary float-right">Sign Up</button>
+        </form>
+      </div>
+      <div *ngIf="isRegistered" class="card-footer">
+        <p>{{message}}</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-6 mx-auto">
+    <div class="card rounded-0">
+      <div class="card-header">
+        <h3 class="mb-0">Sign In</h3>
+        <a routerLink="/register">Need an account?</a>
+        <p class="text-danger">{{loginMessage}}</p>
+      </div>
+      <div class="card-body">
+        <form [formGroup]= "loginForm" (ngSubmit)="signInTapped()">
+          <div class="form-group">
+            <label for="sellerId">YMP Seller Id</label>
+            <input type="text" name="sellerId" id="sellerId" class="form-control rounded-0" formControlName="sellerId" aria-describedby="sellerIdHelp" placeholder="Enter Seller ID">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control rounded-0" formControlName="password" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-primary float-right">Sign In</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

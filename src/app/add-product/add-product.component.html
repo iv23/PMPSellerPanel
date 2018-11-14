@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="col-md-6 mx-auto">
+    <div class="card rounded-0">
+      <div class="card-header">
+        <h3 class="mb-0">Please fill in product details</h3>
+      </div>
+      <div class="card-body">
+        <form *ngIf="categoriesObservable | async; else loading" [formGroup]= "productForm" (ngSubmit)="addProductTapped()">
+          <div class="form-group">
+            <label for="productName">Product Name</label>
+            <input type="text" name="productName" id="productName" class="form-control rounded-0" formControlName="productName" placeholder="Enter product name">
+          </div>
+          <div class="form-group">
+            <label for="productCode">Product Code</label>
+            <input type="text" name="productCode" id="productCode" class="form-control rounded-0" formControlName="productCode" placeholder="Enter product code">
+          </div>
+          <div class="form-group">
+            <label for="mrp">MRP</label>
+            <input type="number" name="mrp" id="mrp" class="form-control rounded-0" formControlName="mrp" placeholder="MRP">
+          </div>
+          <div class="form-group">
+            <label for="ssp">SSP</label>
+            <input type="number" name="ssp" id="ssp" class="form-control rounded-0" formControlName="ssp" placeholder="SSP">
+          </div>
+          <div class="form-group">
+            <label for="ymp">YMP</label>
+            <input type="number" name="ymp" id="ymp" class="form-control rounded-0" formControlName="ymp" placeholder="YMP">
+          </div>
+          <div class="form-group">
+            <label for="shortDescription">Short Description</label>
+            <input type="text" name="shortDescription" id="shortDescription" class="form-control rounded-0" formControlName="shortDescription" placeholder="Short description">
+          </div>
+          <div class="form-group">
+            <label for="longDescription">Long Description</label>
+            <input type="text" name="longDescription" id="longDescription" class="form-control rounded-0" formControlName="longDescription" placeholder="Long description">
+          </div>
+          <div class="form-group">
+            <label for="dimensions">Dimensions</label>
+            <input type="text" name="dimensions" id="dimensions" class="form-control rounded-0" formControlName="dimensions" placeholder="Format (length X breadth X height unit)">
+          </div>
+          <div class="form-group">
+            <label for="primaryImage">Primary Image</label>
+            <input type="file" name="primaryImage" id="primaryImage" class="form-control rounded-0" formControlName="primaryImage" (change)="onFileSelected('primaryImage',$event)">
+          </div>
+          <div class="form-group">
+            <label for="usageInstructions">Usage Instructions(PDF)</label>
+            <input type="file" name="usageInstructions" id="usageInstructions" class="form-control rounded-0" formControlName="usageInstructions" (change)="onFileSelected('usageInstructions',$event)">
+          </div>
+          <div class="form-group">
+            <label for="additionalImages">Additional Images</label>
+            <input type="file" name="additionalImages" id="additionalImages" class="form-control rounded-0" formControlName="additionalImages" (change)="onFileSelected('additionalImages',$event)" multiple="multiple">
+          </div>
+          <div>
+            Select Categories
+          </div>
+          <div class="form-check form-check-inline" *ngFor="let control of categoriesArray.controls; let i = index;">
+            <label class="form-check-label" for="inlineCheckbox{{i}}">{{categories[i].categoryName}}</label>
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox{{i}}"
+                   (change)="getSelectedCategoryValues()"
+                   value="optional" [formControl]="control">
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary float-right">Add product</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #loading>
+  Loading categories...
+</ng-template>
